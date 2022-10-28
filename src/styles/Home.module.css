@@ -28,3 +28,6 @@
 .card h2 {
   @apply text-xl font-semibold;
 }
+.option {
+  @apply mt-5 flex gap-2
+}

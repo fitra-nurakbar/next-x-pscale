@@ -4,6 +4,7 @@ import Post from "../components/Post";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  
   return (
     <Layout title={"Home"}>
       <section className={styles.post}>
@@ -21,11 +22,7 @@ export default function Home() {
           />
           <Button type="submit">Post</Button>
         </form>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post editPost={function test() {console.log("test")}} deletePost={(e) => {console.log()}} />
       </section>
     </Layout>
   );

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import Footer from "./Footer";
 
 export default function Layout({ children, title }) {
   const pageTitle = `${title} | NextJS X Pscale`;
@@ -12,6 +13,7 @@ export default function Layout({ children, title }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {children}
+      <Footer />
     </div>
   );
 }

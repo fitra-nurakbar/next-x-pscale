@@ -1,3 +1,30 @@
-.header {
-  @apply font-bold text-center;
+.post {
+  @apply max-w-[500px] px-5 mx-auto font-poppins;
+}
+.post h1 {
+  @apply font-bold text-4xl text-center mt-10;
+}
+.post form {
+  @apply flex flex-col pt-5 pb-10 px-5 border shadow-md rounded-md my-10;
+}
+.post form > label {
+  @apply font-semibold mb-2;
+}
+.post form > input {
+  @apply border-2 px-4 py-2 rounded-md mb-4;
+}
+.post form > textarea {
+  @apply border-2 px-4 py-2 rounded-md mb-4;
+}
+.button {
+  @apply px-4 py-2 font-semibold rounded-md hover:bg-opacity-75;
+}
+.card {
+  @apply px-5 py-5 border shadow-md rounded-md mb-5;
+}
+.card:nth-last-child(1) {
+  @apply mb-10;
+}
+.card h2 {
+  @apply text-xl font-semibold;
 }

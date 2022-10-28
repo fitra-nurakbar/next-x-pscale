@@ -1,0 +1,6 @@
+.footer {
+  @apply border-2 pt-4 pb-8 flex justify-center;
+}
+.footer a {
+  @apply [&>svg]:h-5 text-sm font-semibold flex justify-center items-center gap-2 hover:text-red-500;
+}

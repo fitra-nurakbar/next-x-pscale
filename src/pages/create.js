@@ -1,51 +1,39 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { urlMain } from "../../lib/url";
-import Button from "../components/Button";
-import Layout from "../components/Layout";
-import Post from "../components/Post";
+import { useRouter } from 'next/router';
+import React, { useState } from 'react'
+import { urlMain } from '../../lib/url';
+import Button from '../components/Button'
+import Layout from '../components/Layout'
 import styles from "../styles/Home.module.css";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const resCategories = await fetch(`${urlMain}/category`, {
     method: "GET",
   });
   const categories = await resCategories.json();
-  const resPosts = await fetch(urlMain, {
-    method: "GET",
-  });
-  const posts = await resPosts.json();
 
-  if (categories.success === false || posts.success === false) {
-    return {
-      notFound: true,
-    };
-  }
 
   return {
     props: {
-      posts,
-      categories,
-    },
-  };
+      categories
+    }
+  }
 }
 
-export default function Home(props) {
-  // const { posts } = props
-  const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState(props.posts);
-  const { categories } = props;
-  const [fields, setFields] = useState({
-    title: "",
-    description: "",
-    category_id: 0,
-  });
+export default function CreatePost(props) {
+const [loading, setLoading] = useState(false);
+// const [posts, setPosts] = useState(props.posts);
+const { categories } = props;
+const [fields, setFields] = useState({
+  title: "",
+  description: "",
+  category_id: 0,
+});
 
-  const router = useRouter();
+const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true)
 
     try {
       const req = await fetch(`${urlMain}/create`, {
@@ -56,25 +44,21 @@ export default function Home(props) {
         body: JSON.stringify(fields),
       });
       const res = await req.json();
-
-      e.target.reset();
-      setLoading(false);
-      const postsFiltered = posts.filter((post) => {
-        return post.id !== res.id && post;
-      });
-
-      setPosts(postsFiltered);
+      router.push("/")
     } catch (err) {
       throw err;
     }
   };
 
+  console.log(categories)
+
   return (
-    <Layout title={"Home"}>
+    <Layout title={"Create Post"}>
       <section className={styles.post}>
         <h1>
           NextJS <span className="text-red-500">x</span> Pscale
         </h1>
+        {loading ? <h1>Loading...</h1>:
         <form onSubmit={submitHandler.bind(this)}>
           <label htmlFor="title">Title :</label>
           <input
@@ -113,13 +97,8 @@ export default function Home(props) {
             ))}
           </select>
           <Button type="submit">Post</Button>
-        </form>
-        {posts.success === false ? (
-          <h1>Posts does&apos;nt</h1>
-        ) : 
-          <Post datas={{ ...props }} />
-        }
+        </form>}
       </section>
     </Layout>
-  );
+  )
 }

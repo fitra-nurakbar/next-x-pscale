@@ -16,6 +16,9 @@
 .post form > textarea {
   @apply border-2 px-4 py-2 rounded-md mb-4;
 }
+.post form > select {
+  @apply border-2 px-4 py-2 rounded-md mb-4 cursor-pointer;
+}
 .button {
   @apply px-4 py-2 font-semibold rounded-md hover:bg-opacity-75;
 }
@@ -26,8 +29,14 @@
   @apply mb-10;
 }
 .card h2 {
-  @apply text-xl font-semibold;
+  @apply text-xl md:text-2xl font-semibold;
+}
+.card pre {
+  @apply text-sm whitespace-pre-wrap font-poppins;
+}
+.card p {
+  @apply text-sm font-semibold;
 }
 .option {
-  @apply mt-5 flex gap-2
+  @apply mt-5 flex gap-2;
 }

@@ -1,52 +1,36 @@
-const { Prisma } = require("@prisma/client");
+import prisma from "../lib/prisma";
 
 const categories = [
   {
-    name: "Hats",
-    description: "Things you can wear on your head",
+    name: "Teknologi",
   },
   {
-    name: "Socks",
-    description: "Things you can wear on your feet",
+    name: "Musik",
   },
   {
-    name: "Shirts",
-    description: "Things you wear on the top half of your body",
+    name: "Makanan",
   },
 ];
 
-const products = [
+const posts = [
   {
-    name: "Cool helmet.",
-    description: "A nice helmet to wear on your head",
-    price: new Prisma.Decimal(19.95),
-    image: "/images/helmet.jpg",
+    title: "Title post",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     category_id: 1,
   },
   {
-    name: "Grey T-Shirt",
-    description: "A nice shirt that you can wear on your body",
-    price: new Prisma.Decimal(22.95),
-    image: "/images/shirt.jpg",
-    category_id: 3,
-  },
-  {
-    name: "Socks",
-    description: "Cool socks that you can wear on your feet",
-    price: new Prisma.Decimal(12.95),
-    image: "/images/socks.jpg",
+    title: "Title post",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     category_id: 2,
   },
   {
-    name: "Sweatshirt",
-    description: "Cool sweatshirt that you can wear on your body",
-    price: new Prisma.Decimal(12.95),
-    image: "/images/sweatshirt.jpg",
+    title: "Title post",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     category_id: 3,
   },
 ];
 
 module.exports = {
-  products,
   categories,
+  posts,
 };

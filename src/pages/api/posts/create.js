@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../../../../lib/prisma";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -15,10 +13,11 @@ export default async function handler(req, res) {
 async function createPost(req, res) {
   const body = req.body;
   try {
-    const newPost = await prisma.Posts.create({
+    const newPost = await prisma.Post.create({
       data: {
         title: body.title,
-        post: body.post,
+        description: body.description,
+        category_id: parseInt(body.category_id),
       },
     });
     return res.status(200).json(newPost, { success: true });

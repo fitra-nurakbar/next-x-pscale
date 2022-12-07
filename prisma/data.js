@@ -1,5 +1,3 @@
-import prisma from "../lib/prisma";
-
 const categories = [
   {
     name: "Teknologi",
@@ -30,7 +28,7 @@ const posts = [
   },
 ];
 
-module.exports = {
+export {
   categories,
   posts,
 };

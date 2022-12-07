@@ -1,5 +1,5 @@
 import prisma from "../lib/prisma.js";
-const { categories, posts } = require("./data.js");
+import { categories, posts } from "./data.js";
 
 const load = async () => {
   try {

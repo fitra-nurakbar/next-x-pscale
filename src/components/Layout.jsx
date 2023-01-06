@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import Footer from "./Footer";
 
 export default function Layout({ children, title }) {
   const pageTitle = `${title} | NextJS X Pscale`;

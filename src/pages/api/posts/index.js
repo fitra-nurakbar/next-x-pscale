@@ -1,27 +1,27 @@
-import prisma from "../../../../lib/prisma";
+import prisma from "../../../../lib/prisma"
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    return await getPosts(req, res);
+    return await getPosts(req, res)
   } else {
     return res
       .status(405)
-      .json({ message: "Method not allowed", success: false });
+      .json({ message: "Method not allowed", success: false })
   }
 }
 
 async function getPosts(req, res) {
-  const body = req.body;
+  const body = req.body
 
   try {
     const allPosts = await prisma.Post.findMany({
       include: {
         category: true,
       },
-    });
-    return res.status(200).json(allPosts, { success: true });
+    })
+    return res.status(200).json(allPosts, { success: true })
   } catch (error) {
-    console.error("Request error", error);
-    res.status(500).json({ error: "Error getting posts", success: false });
+    console.error("Request error", error)
+    res.status(500).json({ error: "Error getting posts", success: false })
   }
 }

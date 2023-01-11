@@ -1,17 +1,17 @@
-import prisma from "../../../../lib/prisma";
+import prisma from "../../../../lib/prisma"
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    return await createPost(req, res);
+    return await createPost(req, res)
   } else {
     return res
       .status(405)
-      .json({ message: "Method not allowed", success: false });
+      .json({ message: "Method not allowed", success: false })
   }
 }
 
 async function createPost(req, res) {
-  const body = req.body;
+  const body = req.body
   try {
     const newPost = await prisma.Post.create({
       data: {
@@ -19,10 +19,10 @@ async function createPost(req, res) {
         description: body.description,
         category_id: parseInt(body.category_id),
       },
-    });
-    return res.status(200).json(newPost, { success: true });
+    })
+    return res.status(200).json(newPost, { success: true })
   } catch (error) {
-    console.error("Request error", error);
-    res.status(500).json({ error: "Error creating post", success: false });
+    console.error("Request error", error)
+    res.status(500).json({ error: "Error creating post", success: false })
   }
 }

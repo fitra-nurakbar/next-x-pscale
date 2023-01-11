@@ -8,7 +8,7 @@ const categories = [
   {
     name: "Makanan",
   },
-];
+]
 
 const posts = [
   {
@@ -26,9 +26,6 @@ const posts = [
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     category_id: 3,
   },
-];
+]
 
-export {
-  categories,
-  posts,
-};
+export { categories, posts }

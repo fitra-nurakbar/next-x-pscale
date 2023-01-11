@@ -1,8 +1,8 @@
-import Head from "next/head";
-import React from "react";
+import Head from "next/head"
+import React from "react"
 
 export default function Layout({ children, title }) {
-  const pageTitle = `${title} | NextJS X Pscale`;
+  const pageTitle = `${title} | NextJS X Pscale`
 
   return (
     <>
@@ -13,5 +13,5 @@ export default function Layout({ children, title }) {
       </Head>
       <main>{children}</main>
     </>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import { faGithub, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import styles from "../styles/Footer.module.css";
+import { faGithub, faGithubSquare } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
+import styles from "../styles/Footer.module.css"
 
 export default function Footer() {
   return (
@@ -11,5 +11,5 @@ export default function Footer() {
         fitra-nurakbar
       </Link>
     </footer>
-  );
+  )
 }

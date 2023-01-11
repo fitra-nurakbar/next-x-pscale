@@ -1,19 +1,31 @@
-import { useSession, signIn, signOut } from "next-auth/react"
+import { getProviders, getSession, signIn } from "next-auth/react"
+import Layout from "../../components/Layout"
 
-export default function Component() {
-  const { data: session } = useSession()
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  const providers = await getProviders()
+
   if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    )
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
   }
+
+  return {
+    props: { providers },
+  }
+}
+
+export default function Component({ providers }) {
+  // console.log(providers)
+
   return (
-    <>
-      Not signed in <br />
+    <Layout title={"Login"}>
+      <h1>Not signed in</h1>
       <button onClick={() => signIn()}>Sign in</button>
-    </>
+    </Layout>
   )
 }
